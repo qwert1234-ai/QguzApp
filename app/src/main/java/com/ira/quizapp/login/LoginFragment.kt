@@ -5,10 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.ira.quizapp.R
 
 class LoginFragment: Fragment(){
+    private var userName: String = ""
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,8 +29,21 @@ class LoginFragment: Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         val button = view.findViewById<Button>(R.id.buttonLogin)
+        checkButtonEnabled()
         button.setOnClickListener {
-            println("Hello")
+            val parrentController = findNavController()
+            parrentController.navigate(R.id.action_loginFragment_to_quizFragment)
         }
+
+        val userTextField = view.findViewById<TextView>(R.id.userName_TextField)
+        userTextField.doOnTextChanged { text, start, before, count ->
+            userName = text.toString()
+            checkButtonEnabled()
+        }
+    }
+
+    private fun checkButtonEnabled() {
+        val button = view?.findViewById<Button>(R.id.buttonLogin)
+        button?.isEnabled = !userName.isEmpty()
     }
 }
