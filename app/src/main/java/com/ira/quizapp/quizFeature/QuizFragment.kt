@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ira.quizapp.R
 import com.ira.quizapp.helpers.DataManager
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+
+@AndroidEntryPoint
 
 class QuizFragment: Fragment() {
     @Inject
@@ -22,6 +25,6 @@ class QuizFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        println("userName : $ {dataManager.userName}")
+        println("userName : ${dataManager.userName}")
     }
 }
