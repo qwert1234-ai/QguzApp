@@ -4,6 +4,9 @@
     <string name="login_button">StartQuiz</string>
     <string name="quiz_welcome_label">Welcome %1$s</string>
     <string name="next_button">Next Question</string>
+    <string name="result_title_label">Your Score</string>
+    <string name="result_button">Restart</string>
+    <string name="answer_label">Answer</string>
 
 
 </resources>
